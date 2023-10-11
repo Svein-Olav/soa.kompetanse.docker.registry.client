@@ -8,9 +8,7 @@ namespace BlazorAppClient.Data
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
-
-        // Create a method to get the weather forecast for a specific date. Getting from the web api https://backend/WeatherForecast/2021-01-01
-        // The method should return a array of WeatherForecast object
+        
         public async Task<WeatherForecast[]> GetForecastAsync()
         {
             var httpClient = new HttpClient();
