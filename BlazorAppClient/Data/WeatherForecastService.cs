@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace BlazorAppClient.Data
 {
     public class WeatherForecastService
@@ -7,14 +9,16 @@ namespace BlazorAppClient.Data
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+        // Create a method to get the weather forecast for a specific date. Getting from the web api https://backend/WeatherForecast/2021-01-01
+        // The method should return a array of WeatherForecast object
+        public async Task<WeatherForecast[]> GetForecastAsync()
         {
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = startDate.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            }).ToArray());
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync($"http://backend/WeatherForecast");
+            var json = await response.Content.ReadAsStringAsync();
+            var weatherForecast = JsonSerializer.Deserialize<WeatherForecast[]>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return weatherForecast;
         }
+
     }
 }
