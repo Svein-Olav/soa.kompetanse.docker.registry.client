@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  blazorappclient:
+    container_name: frontend
+    image: ${DOCKER_REGISTRY-}blazorappclient
+    networks: 
+      - mynetwork
+    build:
+      context: .
+      dockerfile: BlazorAppClient/Dockerfile
+
+  serverapicontainer:
+    container_name: backend
+    networks: 
+      - mynetwork
+    image: sveinregistrycr.azurecr.io/server:v1
+
+networks:
+  mynetwork:
+    driver: bridge
+    
