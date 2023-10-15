@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevOps", "DevOps", "{E168EE
 		DevOps\3-DeployImageToRegistry.ps1 = DevOps\3-DeployImageToRegistry.ps1
 		DevOps\4-DeployImageToContainerInstance.ps1 = DevOps\4-DeployImageToContainerInstance.ps1
 		DevOps\5-DeployImageToAppService.ps1 = DevOps\5-DeployImageToAppService.ps1
+		DevOps\6-DeployContainerAppEnvironment.ps1 = DevOps\6-DeployContainerAppEnvironment.ps1
+		DevOps\7-DeployImageToContainerApp.ps1 = DevOps\7-DeployImageToContainerApp.ps1
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{662D6905-D938-40F8-B5B3-BD79704162C9}"
