@@ -1,6 +1,10 @@
+# Hent passord som er registert i Azure Container registry
 $passord = az acr credential show -n $acr_name --resource-group $resourceGroup --query "passwords[0].value" -o json
+
+# Hent brukernavn som er registert i Azure Container registry
 $username = az acr credential show -n $acr_name --resource-group $resourceGroup --query "username" -o json
 
+# Opprett en Azure Container Instance
 az container create `
     --resource-group $resourceGroup `
     --name acr-tasks `
